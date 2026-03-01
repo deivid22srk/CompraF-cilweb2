@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      TAILWIND_DISABLE_OXIDE: "1"
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,7 +21,7 @@ jobs:
         with:
           node-version: 18
 
-      - name: Limpar cache npm
+      - name: Limpar deps
         run: |
           rm -rf node_modules package-lock.json
           npm cache clean --force
